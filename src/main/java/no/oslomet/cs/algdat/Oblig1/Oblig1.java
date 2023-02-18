@@ -3,6 +3,7 @@ package no.oslomet.cs.algdat.Oblig1;
 ////// Løsningsforslag Oblig 1 ////////////////////////
 
 import java.lang.UnsupportedOperationException;
+import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 public class Oblig1 {
@@ -78,19 +79,17 @@ public class Oblig1 {
 
     ///// Oppgave 4 //////////////////////////////////////
     public static void delsortering(int[] a) {
-        if (a.length <= 1){
+        if (a.length <= 1) {
             return;
         }
         int v = 0;
         int h = a.length - 1;
 
         // Flytt oddetall/partall
-        for (int i = 0; i < a.length - 1; i++) {
-            for (; (a[v] % 2 != 0) && (v < a.length-1); v++) {
-                System.out.println(v);
+        while(true){
+            for (; (a[v] % 2 != 0) && (v < a.length - 1); v++) {
             }
             for (; (a[h] % 2 == 0) && h > 0; h--) {
-                System.out.println(h);
             }
             if (v < h) {
                 int tmp = a[v];
@@ -99,25 +98,55 @@ public class Oblig1 {
             } else break;
         }
 
-        int i = 0;
-        for (; (i < a.length) && (a[i] % 2 != 0); i++){
-            for (int j = i+1; (j < a.length) && (a[j] % 2 != 0); j++) {
-                if (a[j-1] > a[j]) {
-                    int tmp = a[j-1];
-                    a[j-1] = a[j];
-                    a[j] = tmp;
-                }
-            }
+        // Spesialtilfeller
+        if(a[v] % 2 != 0) {v++;}
+
+        // Oddetall først og fremst
+        if (v > 1)
+            kvikksortering0(a, 0, v-1);
+
+        // Kun partall
+        if (a[a.length-1] % 2 == 0)
+            kvikksortering0(a, v, a.length-1);
+    }
+
+    // Resten er programkode fra kompendiet
+    public static void bytt(int[] a, int i, int j) {
+        int temp = a[i]; a[i] = a[j]; a[j] = temp;
+    }
+
+    private static int parter0(int[] a, int v, int h, int skilleverdi)
+    {
+        while (true)                                  // stopper når v > h
+        {
+            while (v <= h && a[v] < skilleverdi) v++;   // h er stoppverdi for v
+            while (v <= h && a[h] >= skilleverdi) h--;  // v er stoppverdi for h
+
+            if (v < h) bytt(a,v++,h--);                 // bytter om a[v] og a[h]
+            else  return v;  // a[v] er nåden første som ikke er mindre enn skilleverdi
         }
-        for (; (i < a.length) && (a[i] % 2 == 0); i++){
-            for (int j = i+1; (j < a.length) && (a[j] % 2 == 0); j++) {
-                if (a[j-1] > a[j]) {
-                    int tmp = a[j-1];
-                    a[j-1] = a[j];
-                    a[j] = tmp;
-                }
-            }
-        }
+    }
+
+    private static int sParter0(int[] a, int v, int h, int indeks)
+    {
+        bytt(a, indeks, h);           // skilleverdi a[indeks] flyttes bakerst
+        int pos = parter0(a, v, h - 1, a[h]);  // partisjonerer a[v:h - 1]
+        bytt(a, pos, h);              // bytter for å få skilleverdien på rett plass
+        return pos;                   // returnerer posisjonen til skilleverdien
+    }
+
+    private static void kvikksortering0(int[] a, int v, int h)  // en privat metode
+    {
+        if (v >= h) return;  // a[v:h] er tomt eller har maks ett element
+        int k = sParter0(a, v, h, (v + h)/2);  // bruker midtverdien
+        kvikksortering0(a, v, k - 1);     // sorterer intervallet a[v:k-1]
+        kvikksortering0(a, k + 1, h);     // sorterer intervallet a[k+1:h]
+    }
+
+    public static void main(String[] args) {
+        int[] a = {7,5,9,13,3};
+        delsortering(a);
+        System.out.println(Arrays.toString(a));
     }
 
     ///// Oppgave 5 //////////////////////////////////////
