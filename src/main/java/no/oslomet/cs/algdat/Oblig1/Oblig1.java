@@ -78,7 +78,46 @@ public class Oblig1 {
 
     ///// Oppgave 4 //////////////////////////////////////
     public static void delsortering(int[] a) {
-        throw new UnsupportedOperationException();
+        if (a.length <= 1){
+            return;
+        }
+        int v = 0;
+        int h = a.length - 1;
+
+        // Flytt oddetall/partall
+        for (int i = 0; i < a.length - 1; i++) {
+            for (; a[v] % 2 != 0; v++) {
+                System.out.println(v);
+            }
+            for (; (a[h] % 2 == 0) && h > 0; h--) {
+                System.out.println(h);
+            }
+            if (v < h) {
+                int tmp = a[v];
+                a[v] = a[h];
+                a[h] = tmp;
+            } else break;
+        }
+
+        int i = 0;
+        for (; (a[i] % 2 != 0) && (i < a.length); i++){
+            for (int j = i+1; (a[j] % 2 != 0) && (j < a.length); j++) {
+                if (a[j-1] > a[j]) {
+                    int tmp = a[j-1];
+                    a[j-1] = a[j];
+                    a[j] = tmp;
+                }
+            }
+        }
+        for (; (a[i] % 2 == 0) && (i < a.length); i++){
+            for (int j = i+1; (a[j] % 2 == 0) && (j < a.length); j++) {
+                if (a[j-1] > a[j]) {
+                    int tmp = a[j-1];
+                    a[j-1] = a[j];
+                    a[j] = tmp;
+                }
+            }
+        }
     }
 
     ///// Oppgave 5 //////////////////////////////////////
