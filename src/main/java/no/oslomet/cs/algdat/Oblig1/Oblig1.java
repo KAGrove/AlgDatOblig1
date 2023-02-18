@@ -56,7 +56,33 @@ public class Oblig1 {
 
     ///// Oppgave 3 //////////////////////////////////////
     public static int antallUlikeUsortert(int[] a) {
-        throw new UnsupportedOperationException();
+        if (a.length == 0){
+            return 0;
+        }
+
+        // Sortering
+        for (int i = 0; i < a.length; i++){
+            for (int j = 1; j < a.length; j++){
+                if (a[j-1] > a[j]){
+                    int tmp = a[j-1];
+                    a[j-1] = a[j];
+                    a[j] = tmp;
+                }
+            }
+        }
+
+        // Antall ulike:
+        int ulike = 1;
+        for(int i = 1; i < a.length; i++){
+            if(a[i] < a[i-1]){
+                throw new IllegalStateException();
+            }
+            if(a[i] > a[i-1]){
+                ulike++;
+            }
+        }
+        return ulike;
+
     }
 
     ///// Oppgave 4 //////////////////////////////////////
