@@ -86,7 +86,7 @@ public class Oblig1 {
 
         // Flytt oddetall/partall
         for (int i = 0; i < a.length - 1; i++) {
-            for (; a[v] % 2 != 0; v++) {
+            for (; (a[v] % 2 != 0) && (v < a.length-1); v++) {
                 System.out.println(v);
             }
             for (; (a[h] % 2 == 0) && h > 0; h--) {
@@ -100,8 +100,8 @@ public class Oblig1 {
         }
 
         int i = 0;
-        for (; (a[i] % 2 != 0) && (i < a.length); i++){
-            for (int j = i+1; (a[j] % 2 != 0) && (j < a.length); j++) {
+        for (; (i < a.length) && (a[i] % 2 != 0); i++){
+            for (int j = i+1; (j < a.length) && (a[j] % 2 != 0); j++) {
                 if (a[j-1] > a[j]) {
                     int tmp = a[j-1];
                     a[j-1] = a[j];
@@ -109,8 +109,8 @@ public class Oblig1 {
                 }
             }
         }
-        for (; (a[i] % 2 == 0) && (i < a.length); i++){
-            for (int j = i+1; (a[j] % 2 == 0) && (j < a.length); j++) {
+        for (; (i < a.length) && (a[i] % 2 == 0); i++){
+            for (int j = i+1; (j < a.length) && (a[j] % 2 == 0); j++) {
                 if (a[j-1] > a[j]) {
                     int tmp = a[j-1];
                     a[j-1] = a[j];
