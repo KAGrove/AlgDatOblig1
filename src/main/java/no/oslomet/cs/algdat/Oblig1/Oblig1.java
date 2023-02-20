@@ -226,13 +226,13 @@ public class Oblig1 {
 
         int i = 0;
         while (i < (a.length+b.length)){
-            if (a.length != 0 && resultat.length <= a.length){
+            if (a.length != 0 && a_indeks < a.length){
                 resultat[i] = a[a_indeks];
                 a_indeks++;
                 i++;
             }
 
-            if (b.length != 0 && resultat.length <= b.length){
+            if (b.length != 0 && b_indeks < b.length){
                 resultat[i] = b[b_indeks];
                 b_indeks++;
                 i++;
