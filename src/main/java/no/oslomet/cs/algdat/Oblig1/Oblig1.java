@@ -319,24 +319,30 @@ public class Oblig1 {
         int nestMinIndeks = 0;
         int tredjeMinIndeks = 0;
 
+        // Minste
         for (int i = 0; i < a.length; i++){
             if (a[i] < min){
                 min = a[i];
                 minIndeks = i;
             }
         }
+
+        // Nest minste
         for (int i = 0; i < a.length; i++){
             if ((a[i] <= nestMin) && i != minIndeks){
                 nestMin = a[i];
                 nestMinIndeks = i;
             }
         }
+
+        // Tredje minste
         for (int i = 0; i < a.length; i++){
             if ((a[i] <= tredjeMin) && i != minIndeks && i != nestMinIndeks){
                 tredjeMin = a[i];
                 tredjeMinIndeks = i;
             }
         }
+
         b[0] = minIndeks;
         b[1] = nestMinIndeks;
         b[2] = tredjeMinIndeks;
