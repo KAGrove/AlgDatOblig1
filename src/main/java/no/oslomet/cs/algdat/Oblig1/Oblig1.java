@@ -152,11 +152,9 @@ public class Oblig1 {
     ///// Oppgave 5 //////////////////////////////////////
     public static void rotasjon(char[] a) {
         if(a.length <= 1) return;
-    }
 
-    public static void rotasjonTall(int[] a) {
-        int tmp1 = a[0];
-        int tmp2 = 0;
+        char tmp1 = a[0];
+        char tmp2 = 'A';
         for(int i = 1; i < a.length; i++){
             tmp2 = a[i];
             a[i] = tmp1;
@@ -165,9 +163,20 @@ public class Oblig1 {
         a[0] = tmp2;
     }
 
+//    public static void rotasjonTall(int[] a) {
+//        int tmp1 = a[0];
+//        int tmp2 = 0;
+//        for(int i = 1; i < a.length; i++){
+//            tmp2 = a[i];
+//            a[i] = tmp1;
+//            tmp1 = tmp2;
+//        }
+//        a[0] = tmp2;
+//    }
+
     public static void main(String[] args) {
-        int[] a = {3,4,5,6};
-        rotasjonTall(a);
+        char[] a = {'A', 'B', 'C', 'D'};
+        rotasjon(a);
         System.out.println(Arrays.toString(a));
     }
 
