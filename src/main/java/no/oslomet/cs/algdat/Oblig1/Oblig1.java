@@ -209,11 +209,11 @@ public class Oblig1 {
         }
     }
 
-    public static void main(String[] args) {
-        char[] a = {'a', 'b', 'c', 'd', 'e', 'f', 'g'};
-        rotasjon(a, -3);
-        System.out.println(Arrays.toString(a));
-    }
+//    public static void main(String[] args) {
+//        char[] a = {'a', 'b', 'c', 'd', 'e', 'f', 'g'};
+//        rotasjon(a, -3);
+//        System.out.println(Arrays.toString(a));
+//    }
 
     ///// Oppgave 7 //////////////////////////////////////
     /// 7a)
@@ -274,7 +274,29 @@ public class Oblig1 {
 
     ///// Oppgave 8 //////////////////////////////////////
     public static int[] indekssortering(int[] a) {
-        throw new UnsupportedOperationException();
+        if (a.length == 0) return a;
+
+        int[] indeks = new int[a.length];
+
+
+        for (int i = 0; i < indeks.length; i++){
+            int maksIndeks = 0;
+            for (int j = 0; j < a.length; j++){
+                if (a[j] < a[maksIndeks]){
+                    maksIndeks = j;
+                }
+            }
+            indeks[i] = maksIndeks;
+            a[maksIndeks] = Integer.parseInt(null);
+        }
+        return indeks;
+    }
+
+    public static void main(String[] args) {
+        int[] a = {6,10,16,11,7,12,3,9,8,5};
+        int[] indeks = indekssortering(a);
+        System.out.println(Arrays.toString(a));
+        System.out.println(Arrays.toString(indeks));
     }
 
     ///// Oppgave 9 //////////////////////////////////////
