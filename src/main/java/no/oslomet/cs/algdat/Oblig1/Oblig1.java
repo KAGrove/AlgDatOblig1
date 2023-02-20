@@ -317,6 +317,7 @@ public class Oblig1 {
 
         int minIndeks = 0;
         int nestMinIndeks = 0;
+        int tredjeMinIndeks = 0;
 
         for (int i = 0; i < a.length; i++){
             if (a[i] < min){
@@ -333,11 +334,12 @@ public class Oblig1 {
         for (int i = 0; i < a.length; i++){
             if ((a[i] <= tredjeMin) && i != minIndeks && i != nestMinIndeks){
                 tredjeMin = a[i];
+                tredjeMinIndeks = i;
             }
         }
-        b[0] = min;
-        b[1] = nestMin;
-        b[2] = tredjeMin;
+        b[0] = minIndeks;
+        b[1] = nestMinIndeks;
+        b[2] = tredjeMinIndeks;
         return b;
     }
 
