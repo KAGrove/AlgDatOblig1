@@ -174,15 +174,45 @@ public class Oblig1 {
 //        a[0] = tmp2;
 //    }
 
-    public static void main(String[] args) {
-        char[] a = {'A', 'B', 'C', 'D'};
-        rotasjon(a);
-        System.out.println(Arrays.toString(a));
-    }
+//    public static void main(String[] args) {
+//        char[] a = {'A', 'B', 'C', 'D'};
+//        rotasjon(a);
+//        System.out.println(Arrays.toString(a));
+//    }
 
     ///// Oppgave 6 //////////////////////////////////////
     public static void rotasjon(char[] a, int k) {
-        throw new UnsupportedOperationException();
+        if(a.length <= 1) return;
+
+        // Snur hele arrayet
+        for (int i = 0; i < a.length/2; i++){
+            char tmp = a[i];
+            a[i] = a[a.length-1-i];
+            a[a.length-1-i] = tmp;
+        }
+
+        if(k < 0){
+            k = a.length+k;
+        }
+        // Snur det første
+        for (int i = 0; i < k/2; i++){
+            char tmp = a[i];
+            a[i] = a[k-1-i];
+            a[k-1-i] = tmp;
+        }
+
+        // Snur det andre
+        for (int i = 0; k+i <= a.length-1; k++, i++){
+            char tmp = a[k];
+            a[k] = a[a.length-1-i];
+            a[a.length-1-i] = tmp;
+        }
+    }
+
+    public static void main(String[] args) {
+        char[] a = {'a', 'b', 'c', 'd', 'e', 'f', 'g'};
+        rotasjon(a, -3);
+        System.out.println(Arrays.toString(a));
     }
 
     ///// Oppgave 7 //////////////////////////////////////
