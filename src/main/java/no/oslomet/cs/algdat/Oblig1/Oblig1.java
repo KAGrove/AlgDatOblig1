@@ -304,31 +304,40 @@ public class Oblig1 {
             throw new NoSuchElementException();
         }
 
-        int[] b = new int[3];
+        // Finne maks (jeg ville egentlig ikke gjøre dette, men
         int maks = 0;
-        int nestMaks = 0;
-        int tredjeMaks = 0;
+        for (int i = 0; i < a.length; i++){
+            if ( a[i] > maks) maks = a[i];
+        }
 
-        int maksIndeks = 0;
-        int nestMaksIndeks = 0;
+        int[] b = new int[3];
+        int min = maks;
+        int nestMin = maks;
+        int tredjeMin = maks;
+
+        int minIndeks = 0;
+        int nestMinIndeks = 0;
 
         for (int i = 0; i < a.length; i++){
-            if (a[i] > maks){
-                b[0] = a[i];
-                maksIndeks = i;
+            if (a[i] < min){
+                min = a[i];
+                minIndeks = i;
             }
         }
         for (int i = 0; i < a.length; i++){
-            if ((a[i] > nestMaks) && i != nestMaksIndeks){
-                b[1] = a[i];
-                nestMaksIndeks = i;
+            if ((a[i] <= nestMin) && i != minIndeks){
+                nestMin = a[i];
+                nestMinIndeks = i;
             }
         }
         for (int i = 0; i < a.length; i++){
-            if ((a[i] > tredjeMaks) && i != maksIndeks && i != nestMaksIndeks){
-                b[2] = a[i];
+            if ((a[i] <= tredjeMin) && i != minIndeks && i != nestMinIndeks){
+                tredjeMin = a[i];
             }
         }
+        b[0] = min;
+        b[1] = nestMin;
+        b[2] = tredjeMin;
         return b;
     }
 
