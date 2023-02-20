@@ -218,7 +218,30 @@ public class Oblig1 {
     ///// Oppgave 7 //////////////////////////////////////
     /// 7a)
     public static String flett(String s, String t) {
-        throw new UnsupportedOperationException();
+        char[] a = s.toCharArray();
+        char[] b = t.toCharArray();
+        char[] resultat = new char[a.length+b.length];
+        int a_indeks = 0;
+        int b_indeks = 0;
+
+        int i = 0;
+        while (i < (a.length+b.length)){
+            if (a.length != 0 && resultat.length <= a.length){
+                resultat[i] = a[a_indeks];
+                a_indeks++;
+                i++;
+            }
+
+            if (b.length != 0 && resultat.length <= b.length){
+                resultat[i] = b[b_indeks];
+                b_indeks++;
+                i++;
+            }
+
+        }
+
+        String flett = String.valueOf(resultat);
+        return flett;
     }
 
     /// 7b)
