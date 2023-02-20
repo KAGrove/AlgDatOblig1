@@ -143,15 +143,32 @@ public class Oblig1 {
         kvikksortering0(a, k + 1, h);     // sorterer intervallet a[k+1:h]
     }
 
-    public static void main(String[] args) {
-        int[] a = {7,5,9,13,3};
-        delsortering(a);
-        System.out.println(Arrays.toString(a));
-    }
+//    public static void main(String[] args) {
+//        int[] a = {7,5,9,13,3};
+//        delsortering(a);
+//        System.out.println(Arrays.toString(a));
+//    }
 
     ///// Oppgave 5 //////////////////////////////////////
     public static void rotasjon(char[] a) {
-        throw new UnsupportedOperationException();
+        if(a.length <= 1) return;
+    }
+
+    public static void rotasjonTall(int[] a) {
+        int tmp1 = a[0];
+        int tmp2 = 0;
+        for(int i = 1; i < a.length; i++){
+            tmp2 = a[i];
+            a[i] = tmp1;
+            tmp1 = tmp2;
+        }
+        a[0] = tmp2;
+    }
+
+    public static void main(String[] args) {
+        int[] a = {3,4,5,6};
+        rotasjonTall(a);
+        System.out.println(Arrays.toString(a));
     }
 
     ///// Oppgave 6 //////////////////////////////////////
