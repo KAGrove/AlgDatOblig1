@@ -246,7 +246,30 @@ public class Oblig1 {
 
     /// 7b)
     public static String flett(String... s) {
-        throw new UnsupportedOperationException();
+        //Håndtere tomme strenger
+        if (s.length == 0) {
+            return "";
+        }
+
+        //finne lengden på lengste ord
+        int ordlengde = s[0].length();
+        for (int i = 0; i < s.length; i++) {
+            if (s[i].length() > ordlengde) {
+                ordlengde = s[i].length();
+            }
+        }
+
+        //loope gjennom alle ordene n antall ganger
+        //hvor n er ordlengde på lengste ord
+        String ut = "";
+        for (int bokstav = 0; bokstav < ordlengde; bokstav++) {
+            for (int ord = 0; ord < s.length; ord++) {
+                if (bokstav < s[ord].length()) {
+                    ut += s[ord].charAt(bokstav);
+                }
+            }
+        }
+        return ut;
     }
 
     ///// Oppgave 8 //////////////////////////////////////
