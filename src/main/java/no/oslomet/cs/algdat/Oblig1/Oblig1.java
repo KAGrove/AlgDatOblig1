@@ -278,16 +278,15 @@ public class Oblig1 {
 
         int[] indeks = new int[a.length];
 
+        int[] sortert = Arrays.copyOf(a, a.length);
+        Arrays.sort(sortert);
 
         for (int i = 0; i < indeks.length; i++){
-            int maksIndeks = 0;
             for (int j = 0; j < a.length; j++){
-                if (a[j] < a[maksIndeks]){
-                    maksIndeks = j;
+                if (a[j] == sortert[i]){
+                    indeks[i] = j;
                 }
             }
-            indeks[i] = maksIndeks;
-            a[maksIndeks] = Integer.parseInt(null);
         }
         return indeks;
     }
@@ -301,7 +300,36 @@ public class Oblig1 {
 
     ///// Oppgave 9 //////////////////////////////////////
     public static int[] tredjeMin(int[] a) {
-        throw new UnsupportedOperationException();
+        if (a.length < 3){
+            throw new NoSuchElementException();
+        }
+
+        int[] b = new int[3];
+        int maks = 0;
+        int nestMaks = 0;
+        int tredjeMaks = 0;
+
+        int maksIndeks = 0;
+        int nestMaksIndeks = 0;
+
+        for (int i = 0; i < a.length; i++){
+            if (a[i] > maks){
+                b[0] = a[i];
+                maksIndeks = i;
+            }
+        }
+        for (int i = 0; i < a.length; i++){
+            if ((a[i] > nestMaks) && i != nestMaksIndeks){
+                b[1] = a[i];
+                nestMaksIndeks = i;
+            }
+        }
+        for (int i = 0; i < a.length; i++){
+            if ((a[i] > tredjeMaks) && i != maksIndeks && i != nestMaksIndeks){
+                b[2] = a[i];
+            }
+        }
+        return b;
     }
 
     ///// Oppgave 10 //////////////////////////////////////
