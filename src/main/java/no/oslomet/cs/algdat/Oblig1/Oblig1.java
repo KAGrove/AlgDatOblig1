@@ -355,7 +355,27 @@ public class Oblig1 {
     }
 
     public static boolean inneholdt(String a, String b) {
-        throw new UnsupportedOperationException();
+        char[] copy = b.toCharArray();
+        if (a.length() > b.length()){
+            return false;
+        }
+        if (a.length() == 0){
+            return true;
+        }
+        for (int i = 0; i < a.length(); i++){
+            boolean funnet = false;
+            for (int j = 0; j < copy.length; j++){
+                if (copy[j] == a.charAt(i)){
+                    funnet = true;
+                    copy[j] = 0;
+                    break;
+                }
+            }
+            if (!funnet){
+                return false;
+            }
+        }
+        return true;
     }
 
 }  // Oblig1
